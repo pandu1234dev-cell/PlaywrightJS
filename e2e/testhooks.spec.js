@@ -13,5 +13,15 @@ test.describe('Test Hooks', () => {
         await page.locator('.top-menu a[href="/computers"]').click();
         await expect(page).toHaveURL(/computers/);
     });
+    test('Verify Desktops submenu', async ({ page }) => {
+        await page.locator('.top-menu a[href="/computers"]').hover();
+        await page.locator("//ul[@class='top-menu']//a[normalize-space()='Desktops']").click();
+        await expect(page).toHaveURL(/desktops/);
+    });
+    test('Verify Notebooks submenu', async ({ page }) => {
+        await page.locator('.top-menu a[href="/computers"]').hover();
+        await page.locator("//ul[@class='top-menu']//a[normalize-space()='Notebooks']").click();
+        await expect(page).toHaveURL(/notebooks/);
+    });
 
 });
