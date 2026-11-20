@@ -9,5 +9,9 @@ test.describe('Test Hooks', () => {
         await page.locator('.top-menu a[href="/books"]').click();
         await expect(page).toHaveURL(/books/);
     });
+    test('Verify Computers menu', async ({ page }) => {
+        await page.locator('.top-menu a[href="/computers"]').click();
+        await expect(page).toHaveURL(/computers/);
+    });
 
 });
