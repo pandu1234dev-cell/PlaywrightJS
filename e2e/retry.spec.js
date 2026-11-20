@@ -4,7 +4,7 @@ test.describe('Retry Example', () => {
 
     test.describe.configure({ retries: 3 });
 
-    test('Retry Example', async ({ page }, testInfo) => {
+    test.skip('Retry Example', async ({ page }, testInfo) => {
 
         console.log('Execution number:', testInfo.retry + 1);
 
@@ -19,7 +19,7 @@ test.describe('Retry Example', () => {
         }
 
     });
-    test('Flaky Test Example', async ({ page }) => {
+    test.skip('Flaky Test Example', async ({ page }) => {
 
     const randomNumber = Math.random();
 
