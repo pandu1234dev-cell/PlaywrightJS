@@ -58,8 +58,8 @@ test('Multiple Browser Contexts ', async () => {
 
      // 1. Launch Browser
     const browser = await chromium.launch({
-        headless: false
-    });
+    headless: process.env.CI ? true : false
+});
 
     // 2. Create First Context
     const context1 = await browser.newContext();
