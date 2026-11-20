@@ -1,18 +1,23 @@
 const { test, expect } = require('@playwright/test');
 
-let count = 0;
+test.describe('Retry Example', () => {
 
-test('Retry Example', async ({ page }) => {
+    test.describe.configure({ retries: 2 });
 
-    count++;
+    test('Retry Example', async ({ page }, testInfo) => {
 
-    console.log('Execution number:', count);
+        console.log('Execution number:', testInfo.retry + 1);
 
-    if (count <= 3) {
-        expect(10).toBe(20);  // Fail
-    }
-    else {
-        expect(10).toBe(10);  // Pass
-    }
+        if (testInfo.retry < 3) {
+
+            expect(10).toBe(20);  // Fail first 2 attempts
+
+        } else {
+
+            expect(10).toBe(10);  // Pass on 3th attempt
+
+        }
+
+    });
 
 });
