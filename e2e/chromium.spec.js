@@ -87,11 +87,6 @@ test('Multiple Browser Contexts ', async () => {
     console.log('Page 2:', await page2.title());
 
     // 9. Close Browser
-    // await browser.close();
-    // waiting for 5 seconds before closing the browser
-    await page1.waitForTimeout(5000); 
-    await page2.waitForTimeout(5000);
-    
     await browser.close();
 
 });
