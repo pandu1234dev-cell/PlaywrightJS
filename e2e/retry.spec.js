@@ -2,13 +2,13 @@ const { test, expect } = require('@playwright/test');
 
 test.describe('Retry Example', () => {
 
-    test.describe.configure({ retries: 2 });
+    test.describe.configure({ retries: 3 });
 
     test('Retry Example', async ({ page }, testInfo) => {
 
         console.log('Execution number:', testInfo.retry + 1);
 
-        if (testInfo.retry < 3) {
+        if (testInfo.retry < 4) {
 
             expect(10).toBe(20);  // Fail first 2 attempts
 
@@ -19,5 +19,15 @@ test.describe('Retry Example', () => {
         }
 
     });
+    test('Flaky Test Example', async ({ page }) => {
+
+    const randomNumber = Math.random();
+
+    console.log(randomNumber);
+
+    expect(randomNumber).toBeGreaterThan(0.5);
+
+});
+
 
 });
